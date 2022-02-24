@@ -1,0 +1,425 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Job API Documentation",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api"
+        }
+    ],
+    "paths": {
+        "/applications": {
+            "get": {
+                "tags": [
+                    "Job Applications"
+                ],
+                "summary": "List job applications",
+                "description": "This route list all registered job applications.",
+                "operationId": "dbd30e586e706d8c52bd39521719bd15",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "resume_id": 1,
+                                        "resume_candidate": "Cicero Augusto",
+                                        "resume_description": "System Analyst with experience"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/applications/job/{id}": {
+            "get": {
+                "tags": [
+                    "Job Applications"
+                ],
+                "summary": "Search job application by job id",
+                "description": "This route gets the data of a job application through a job id.",
+                "operationId": "5db22e31fda5540f06a829f0ad9fc3e5",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "path",
+                        "description": "Job ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "resume_id": 1,
+                                        "resume_candidate": "Cicero Augusto",
+                                        "resume_description": "System Analyst with experience"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/applications/candidate/{name}": {
+            "get": {
+                "tags": [
+                    "Job Applications"
+                ],
+                "summary": "Search job application by candidate name",
+                "description": "This route gets the data of a job application through a candidate name.",
+                "operationId": "768ae14c3d40cc9ad2f9916178dfc1b4",
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "path",
+                        "description": "JobApplication Candidate Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "resume_id": 1,
+                                        "resume_candidate": "Cicero Augusto",
+                                        "resume_description": "System Analyst with experience"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/jobs": {
+            "get": {
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "List jobs",
+                "description": "List all resgistered jobs.",
+                "operationId": "61095dd3fdb7b25e7daa0084b396ca6e",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": [
+                                        {
+                                            "job_id": 379,
+                                            "job_title": "Analyst",
+                                            "job_description": "System Analyst with experience",
+                                            "created_at": "2022-02-18 12:13:59",
+                                            "job_location": "Brazil",
+                                            "job_expires": "2022-03-20",
+                                            "application_email": "hr@bigcompany.com",
+                                            "company_name": "Big Company",
+                                            "company_website": "http://www.bigcompany.com.br",
+                                            "company_tagline": "",
+                                            "company_twitter": "@bigcompany",
+                                            "company_video": "",
+                                            "application_deadline": "2022-02-03",
+                                            "company_logo": "http://localhost/wp-content/uploads/2022/02/bigcompany.png",
+                                            "extra_fields": {
+                                                "experience_needed": "Yes"
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/jobs/{ID}": {
+            "get": {
+                "tags": [
+                    "Jobs"
+                ],
+                "summary": "Search job by ID",
+                "description": "Gets the data of a job through an ID.",
+                "operationId": "59cfd805e4e8cbae6213c2cdcc5d4d33",
+                "parameters": [
+                    {
+                        "name": "ID",
+                        "in": "path",
+                        "description": "Job ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "job_id": 1,
+                                        "job_title": "Analyst",
+                                        "job_description": "System Analyst with experience",
+                                        "created_at": "2022-02-18 12:13:59",
+                                        "job_location": "Brazil",
+                                        "job_expires": "2022-03-20",
+                                        "application_email": "hr@bigcompany.com",
+                                        "company_name": "Big Company",
+                                        "company_website": "http://www.bigcompany.com.br",
+                                        "company_tagline": "",
+                                        "company_twitter": "@bigcompany",
+                                        "company_video": "",
+                                        "application_deadline": "2022-02-03",
+                                        "company_logo": "http://localhost/wp-content/uploads/2022/02/bigcompany.png",
+                                        "extra_fields": {
+                                            "experience_needed": "Yes"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/members": {
+            "get": {
+                "tags": [
+                    "Members"
+                ],
+                "summary": "List members",
+                "description": "List all resgistered members.",
+                "operationId": "0a7045fbb9a3c713742cb2ed937a0105",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "member_id": 1,
+                                        "member_name": "Cicero Augusto",
+                                        "member_email": "ciceroam@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/members/email/{email}": {
+            "get": {
+                "tags": [
+                    "Members"
+                ],
+                "summary": "Search member by email",
+                "description": "Gets the data of a member through an email.",
+                "operationId": "872ed260f5b548ca771eab14113f9647",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "member_id": 1,
+                                        "member_name": "Cicero Augusto",
+                                        "member_email": "ciceroam@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/members/noapplication": {
+            "get": {
+                "tags": [
+                    "Members"
+                ],
+                "summary": "List members with no applications",
+                "description": "List all resgistered members with no job applications.",
+                "operationId": "94e7cd5706e449bda36e5e76a6ba2a70",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "member_id": 1,
+                                        "member_name": "Cicero Augusto",
+                                        "member_email": "ciceroam@gmail.com"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/resumes": {
+            "get": {
+                "tags": [
+                    "Resumes"
+                ],
+                "summary": "List resumes",
+                "description": "List all resgistered resumes.",
+                "operationId": "e8504de846fba76c6d19df4f0d767320",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "resume_id": 1,
+                                        "resume_candidate": "Cicero Augusto",
+                                        "resume_description": "System Analyst with experience"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/resumes/name/{name}": {
+            "get": {
+                "tags": [
+                    "Resumes"
+                ],
+                "summary": "Search resume by candidate name",
+                "description": "Gets the data of a resume through a candidate name.",
+                "operationId": "702b2d0c36ff9705b59c55c92ebae156",
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "path",
+                        "description": "Resume Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "example": {
+                                        "resume_id": 1,
+                                        "resume_candidate": "Cicero Augusto",
+                                        "resume_description": "System Analyst with experience"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
