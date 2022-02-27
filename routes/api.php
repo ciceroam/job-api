@@ -4,6 +4,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\SmsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,8 @@ Route::get('/resumes/name/{name}', [ResumeController::class, 'showByName']);
 Route::get('/applications', [JobApplicationController::class, 'index']);
 Route::get('/applications/job/{id}', [JobApplicationController::class, 'showByJobId']);
 Route::get('/applications/candidate/{name}', [JobApplicationController::class, 'showByCandidateName']);
+
+Route::post('/sms', [SmsController::class, 'send']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
